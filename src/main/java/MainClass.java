@@ -16,16 +16,20 @@ public class MainClass {
         driver.manage().window().maximize();
 
         driver.get("http://en.wikipedia.org");
+        driver.findElement(By.xpath("//input[@id='searchButton']")).click();
 
-        WebElement link = driver.findElement(By.linkText("Log in"));
-        WebElement link2 = driver.findElement(By.partialLinkText("Donate"));
-        WebElement link3 = driver.findElement(By.name("search"));
-        WebElement link4 = driver.findElement(By.className("searchButton"));
-        WebElement link5 = driver.findElement(By.id("ca-viewsource"));
-        WebElement link6 = driver.findElement(By.tagName("input"));
-        WebElement link7 = driver.findElement(By.cssSelector("div#simpleSearch input#searchButton"));
-        WebElement link8 = driver.findElement(By.xpath("//div[@id='mw-panel']/div[@id='p-logo']//a"));
+        driver.get("https://github.com/");
+        WebElement button = driver.findElement(By.xpath("//form[@class='home-hero-signup js-signup-form']//button"));
+        if (button.getText().equals("Sign up for GitHub")){
+            System.out.println("Success");
+        }else System.out.println("Fail");
+//        button.submit();
+        driver.findElement(By.xpath("//a[text()='Sign in']")).click();
 
-        driver.quit();
+        driver.get("https://facebook.com/");
+        driver.findElement(By.xpath("//label[@id='loginbutton']/input")).submit();
+
+
+//        driver.quit();
     }
 }
