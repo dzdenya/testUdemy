@@ -2,43 +2,63 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class MainClass {
+    static WebDriver driver;
+    static WebDriverWait wait;
+
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "C:\\Users\\Denys\\IdeaProjects\\testUdemy\\drivers\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Projects\\testUdemy\\drivers\\chromedriver.exe");
 
-        WebDriver driver = new FirefoxDriver();
+        driver = new ChromeDriver();
 
+        wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-
-        driver.get("http://en.wikipedia.org");
-        driver.findElement(By.xpath("//input[@id='searchInput']"))
-                .sendKeys("Selenium WebDriver");
-        driver.findElement(By.xpath("//input[@id='searchButton']")).click();
-        System.out.println(driver
-                .findElement(By.xpath("//div[@id='searchText']/input")).getAttribute("value"));
-        driver.findElement(By.xpath("//div[@id='searchText']/input")).clear();
-
-        driver.get("https://github.com/");
-        driver.findElement(By.xpath(".//*[@id='user[login]']")).sendKeys("test@gmail.com");
-        driver.findElement(By.xpath(".//*[@id='user[password]']")).sendKeys("test7654321");
-        WebElement button = driver.findElement(By.xpath("//form[@class='home-hero-signup js-signup-form']//button"));
-        if (button.getText().equals("Sign up for GitHub")){
-            System.out.println("Success");
-        }else System.out.println("Fail");
-        button.submit();
-        driver.findElement(By.xpath("//a[text()='Sign in']")).click();
-
-        driver.get("https://facebook.com/");
-        driver.findElement(By.xpath(".//*[@id='email']")).sendKeys("test@gmail.com");
-        driver.findElement(By.xpath(".//*[@id='pass']")).sendKeys("test7654321");
-        driver.findElement(By.xpath("//label[@id='loginbutton']/input")).submit();
+//        driver.manage().window().maximize();
 
 
+//        driver.get("http://rozetka.com.ua");
+//        driver.get("https://bt.rozetka.com.ua/washing_machines/c80124/filter/producer=bosch,candy;33119=40879/");
+        driver.get("https://bt.rozetka.com.ua/washing_machines/c80124/filter/");
+
+//        driver.findElement(By.xpath("//a[@href='https://rozetka.com.ua/all-categories-goods/']")).click();
+
+//        driver.findElement(By.xpath("//a[@href='https://bt.rozetka.com.ua/washing_machines/c80124/']")).click();
+
+//        driver.findElement(By.xpath("//a[text()='Полногабаритные']")).click();
+
+//                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(rbXpath +"/../../../input")));
+//        if (!driver.findElement(By.xpath("//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'Bosch')]/../../../input")).isSelected()) {
+//            driver.findElement(By.xpath("//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'Bosch')]")).click();
+//        }
+
+        selectCheckBox("Bosch");
+        selectCheckBox("Bosch");
+        selectCheckBox("Candy");
+        selectCheckBox("Beko");
+        selectCheckBox("Bosch");
+        deselectCheckBox("Candy");
+        
 //        driver.quit();
+    }
+
+    public static void selectCheckBox(String name){
+        String rbXpath = "//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'%s')]";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(rbXpath, name) +"/../../../input")));
+        if (!driver.findElement(By.xpath(String.format(rbXpath, name) +"/../../../input")).isSelected())
+            driver.findElement(By.xpath(String.format(rbXpath, name))).click();
+    }
+    public static void deselectCheckBox(String name){
+        String rbXpath = "//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'%s')]";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(rbXpath, name) +"/../../../input")));
+        if (driver.findElement(By.xpath(String.format(rbXpath, name) +"/../../../input")).isSelected())
+            driver.findElement(By.xpath(String.format(rbXpath, name))).click();
     }
 }
