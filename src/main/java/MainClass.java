@@ -23,42 +23,17 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        driver.manage().window().maximize();
 
+        driver.get("https://www.facebook.com/?stype=lo&jlou=Affqexabs4O44j2LDKMMsugQ5m_zE6e_eMrgLfZU8kqkM4bXFcx1GcvznCYB8rCyZI8Xmz-x2McWvsKoHXYjnreIDT6lklXVUrhJ-45HicniMQ&smuh=32118&lh=Ac9ItPFHrHy_Ek-p");
 
-//        driver.get("http://rozetka.com.ua");
-//        driver.get("https://bt.rozetka.com.ua/washing_machines/c80124/filter/producer=bosch,candy;33119=40879/");
-        driver.get("https://bt.rozetka.com.ua/washing_machines/c80124/filter/");
+        selectOption("day","5");
+        selectOption("month","8");
+        selectOption("year","5");
 
-//        driver.findElement(By.xpath("//a[@href='https://rozetka.com.ua/all-categories-goods/']")).click();
-
-//        driver.findElement(By.xpath("//a[@href='https://bt.rozetka.com.ua/washing_machines/c80124/']")).click();
-
-//        driver.findElement(By.xpath("//a[text()='Полногабаритные']")).click();
-
-//                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(rbXpath +"/../../../input")));
-//        if (!driver.findElement(By.xpath("//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'Bosch')]/../../../input")).isSelected()) {
-//            driver.findElement(By.xpath("//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'Bosch')]")).click();
-//        }
-
-        selectCheckBox("Bosch");
-        selectCheckBox("Bosch");
-        selectCheckBox("Candy");
-        selectCheckBox("Beko");
-        selectCheckBox("Bosch");
-        deselectCheckBox("Candy");
-        
-//        driver.quit();
     }
-
-    public static void selectCheckBox(String name){
-        String rbXpath = "//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'%s')]";
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(rbXpath, name) +"/../../../input")));
-        if (!driver.findElement(By.xpath(String.format(rbXpath, name) +"/../../../input")).isSelected())
-            driver.findElement(By.xpath(String.format(rbXpath, name))).click();
-    }
-    public static void deselectCheckBox(String name){
-        String rbXpath = "//i[@class='filter-parametrs-i-l-i-default-title'][contains(text(),'%s')]";
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(rbXpath, name) +"/../../../input")));
-        if (driver.findElement(By.xpath(String.format(rbXpath, name) +"/../../../input")).isSelected())
-            driver.findElement(By.xpath(String.format(rbXpath, name))).click();
+    public static void selectOption(String listName, String option){
+        String listXpath = String.format("//select[@id='%s']", listName);
+        String optionXpath = String.format("//select[@id='%s']/option[%s]", listName, option);
+        driver.findElement(By.xpath(listXpath)).click();
+        driver.findElement(By.xpath(optionXpath)).click();
     }
 }
