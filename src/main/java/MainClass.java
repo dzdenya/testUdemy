@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,27 +24,22 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("https://jqueryui.com/droppable/#accepted-elements");
-        WebElement fr = driver.findElement(By.xpath("//iframe"));
-        driver.switchTo().frame(fr);
-        WebElement link = driver.findElement(By.xpath("//div[@id='draggable-nonvalid']"));
-        WebElement link2 = driver.findElement(By.xpath("//div[@id='draggable']"));
-        WebElement link3 = driver.findElement(By.xpath("//div[@id='droppable']"));
-//
-//        driver.get("https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_draganddrop2");
-//          driver.switchTo().frame("IF1");
-//        WebElement link = driver.findElement(By.xpath("//div[@id='div1']"));
-////        WebElement link1 = driver.findElement(By.xpath("//div[@id='draggable']"));
-//        WebElement link2 = driver.findElement(By.xpath("//div[@id='div2']"));
-//
-        Actions actions = new Actions(driver);
-////        actions.moveToElement(link).build().perform();
-//
-//        actions.dragAndDrop(link, link3).perform();
-        actions.dragAndDrop(link2, link3).perform();
-////
-        actions.clickAndHold(link).moveToElement(link3).release().build().perform();
+        driver.get("http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html?ssSourceSiteId=otnpt");
 
+        driver.findElement(By.xpath("//a[text()='jdk-8u171-windows-x64.exe']")).click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.switchTo().alert().accept();
+
+        driver.get("https://google.com");
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("confirm('Are you sure?');");
+
+        driver.switchTo().alert().accept();
+        
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
