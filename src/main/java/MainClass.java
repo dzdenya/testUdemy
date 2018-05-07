@@ -1,5 +1,8 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
 
@@ -16,8 +19,11 @@ public class MainClass {
 
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Projects\\testUdemy\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "C:\\Projects\\testUdemy\\drivers\\geckodriver.exe");
+        System.setProperty("webdriver.opera.driver", "C:\\Projects\\testUdemy\\drivers\\operadriver.exe");
+        System.setProperty("webdriver.edge.driver", "C:\\Projects\\testUdemy\\drivers\\MicrosoftWebDriver.exe");
 
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
 
 //        wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -28,15 +34,15 @@ public class MainClass {
         }
 
         driver.get("https://images.google.com");
-        driver.findElement(By.xpath("//a[@aria-label='Поиск по картинке']")).click();
-        driver.findElement(By.xpath("//a[text()='Загрузить файл']")).click();
+        driver.findElement(By.xpath("//span[@class='gsst_e']")).click();
+        driver.findElement(By.xpath("//a[@class='qbtbha qbtbtxt qbclr']")).click();
         driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Screenshots\\screenshots1.png");
 
 
 
 
         try {
-            Thread.sleep(1500);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
