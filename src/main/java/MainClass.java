@@ -27,29 +27,12 @@ public class MainClass {
             System.out.println("Вероятно вы перетягивали окно в момент разворачивания на весь экран");
         }
 
-        driver.get("https://en.wikipedia.org");
-        String select = Keys.chord(Keys.CONTROL, "a");
-        String cut = Keys.chord(Keys.CONTROL, "x");
-        String paste = Keys.chord(Keys.CONTROL, "v");
+        driver.get("https://images.google.com");
+        driver.findElement(By.xpath("//a[@aria-label='Поиск по картинке']")).click();
+        driver.findElement(By.xpath("//a[text()='Загрузить файл']")).click();
+        driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Screenshots\\screenshots1.png");
 
-        WebElement element = driver.findElement(By.xpath("//input[@id='searchInput']"));
 
-        element.sendKeys(Keys.chord(Keys.SHIFT, "test text"));
-        element.sendKeys(select);
-        element.sendKeys(cut);
-        element.sendKeys(paste);
-        element.sendKeys(Keys.ENTER);
-
-        Date dateNow = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("hh_mm_ss");
-        String fileName = format.format(dateNow)+".png";
-
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screenshot, new File("C:\\Screenshots\\" + fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
         try {
