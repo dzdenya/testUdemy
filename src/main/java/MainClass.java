@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,20 +26,28 @@ public class MainClass {
             System.out.println("Вероятно вы перетягивали окно в момент разворачивания на весь экран");
         }
 
-        driver.get("https://github.com/");
+        driver.get("https://en.wikipedia.org");
+        String select = Keys.chord(Keys.CONTROL, "a");
+        String cut = Keys.chord(Keys.CONTROL, "x");
+        String paste = Keys.chord(Keys.CONTROL, "v");
 
-        System.out.println(driver.findElements(By.xpath("//a[text()='Sing in']")).size());
+        WebElement element = driver.findElement(By.xpath("//input[@id='searchInput']"));
 
-        if(driver.findElements(By.xpath("//a[text()='Log in']")).size() > 0) System.out.println("Such element is presented");
-        else System.out.println("Cannot find such element");
+        element.sendKeys(Keys.chord(Keys.SHIFT, "test text"));
+        element.sendKeys(select);
+        element.sendKeys(cut);
+        element.sendKeys(paste);
+        element.sendKeys(Keys.ENTER);
 
 
 
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        driver.quit();
+
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.quit();
     }
 }
