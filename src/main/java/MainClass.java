@@ -1,16 +1,9 @@
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.commons.io.FileUtils;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class MainClass {
@@ -20,10 +13,10 @@ public class MainClass {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Projects\\testUdemy\\drivers\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "C:\\Projects\\testUdemy\\drivers\\geckodriver.exe");
-        System.setProperty("webdriver.opera.driver", "C:\\Projects\\testUdemy\\drivers\\operadriver.exe");
         System.setProperty("webdriver.edge.driver", "C:\\Projects\\testUdemy\\drivers\\MicrosoftWebDriver.exe");
+        System.setProperty("phantomjs.binary.path", "C:\\Projects\\testUdemy\\drivers\\phantomjs.exe");
 
-        driver = new EdgeDriver();
+        driver = new PhantomJSDriver();
 
 //        wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
