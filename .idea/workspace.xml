@@ -16,11 +16,10 @@
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="48" selection-end-column="11" />
+            <state relative-caret-position="255">
+              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1525674676616" expanded="true" signature="1198:1359" ph="..." />
               </folding>
             </state>
           </provider>
@@ -74,7 +73,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1076" />
@@ -218,12 +217,12 @@
       <workItem from="1525238678138" duration="27241000" />
       <workItem from="1525332376740" duration="13035000" />
       <workItem from="1525411530716" duration="16294000" />
-      <workItem from="1525670213719" duration="2932000" />
+      <workItem from="1525670213719" duration="5781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61421000" />
+    <option name="totallyTimeSpent" value="64270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
@@ -283,7 +282,6 @@
           <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1525674676616" expanded="true" signature="1198:1359" ph="..." />
           </folding>
         </state>
       </provider>
@@ -304,7 +302,6 @@
           <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1525674676616" expanded="true" signature="1198:1359" ph="..." />
           </folding>
         </state>
       </provider>
@@ -325,7 +322,6 @@
           <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1525674676616" expanded="true" signature="1198:1359" ph="..." />
           </folding>
         </state>
       </provider>
@@ -504,11 +500,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="48" selection-end-column="11" />
+        <state relative-caret-position="255">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1525674676616" expanded="true" signature="1198:1359" ph="..." />
           </folding>
         </state>
       </provider>

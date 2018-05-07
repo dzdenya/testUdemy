@@ -19,27 +19,28 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        driver.manage().window().maximize();
 
-        driver.get("http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html?ssSourceSiteId=otnpt");
-        String nameWindow = driver.getWindowHandle();
+        driver.get("https://www.utest.com");
+        String nameTab = driver.getWindowHandle();
 
-        driver.findElement(By.xpath("//a[text()='Oracle Binary Code License Agreement for Java SE']")).click();
+        driver.findElement(By.xpath("//div[@class=\"hamburger\"]/span[2]")).click();
+        driver.findElement(By.xpath("//li/a[text()='Help']")).click();
 
-        for( String windowHandle:driver.getWindowHandles()){    //переключаемся в последнее открытое окно
-            driver.switchTo().window(windowHandle);
+        for (String tab: driver.getWindowHandles()){
+            driver.switchTo().window(tab);
         }
+        driver.findElement(By.xpath("//a[text()='Registering for uTest']")).click();
+
+        driver.switchTo().window(nameTab);
+        driver.findElement(By.xpath("//a[text()='JOIN UTEST']")).click();
+
 
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(By.xpath("//*[@id=\"u02menulink\"]/div[1]"))).build().perform();
-        driver.findElement(By.xpath("//*[@id=\"u02mmenu\"]/div/ul/li[2]/a")).click();
-
-        driver.switchTo().window(nameWindow);
-        driver.findElement(By.xpath("//span[text()=\"Overview\"]")).click();
 
 //        try {
 //            Thread.sleep(10000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        driver.quit();
+//        driver.quit();
     }
 }
